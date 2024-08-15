@@ -6,7 +6,7 @@ export const useAxiosPrivate = () => {
     const responseInterceptor = axiosPrivate.interceptors.response.use(
       (response) => response,
       async (error) => {
-        return Promise.reject(error);
+        return Promise.reject(new Error(error));
       }
     );
     return () => {
