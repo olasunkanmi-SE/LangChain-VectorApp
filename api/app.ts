@@ -1,7 +1,7 @@
-import express from "express";
 import * as bodyParser from "body-parser";
-import { errorMiddleware } from "./middlewares/error";
 import cors from "cors";
+import express from "express";
+import { errorMiddleware } from "./middlewares/error";
 export class App {
   app: express.Application;
 
@@ -26,8 +26,8 @@ export class App {
     }
   }
 
-  public listen() {
-    this.app.listen(this.port, () => {
+  public async listen() {
+    this.app.listen(this.port, async () => {
       console.log(`Server running on https://localhost:${this.port}`);
     });
   }

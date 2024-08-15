@@ -22,12 +22,13 @@ export class DocumentService implements IDocumentService {
       }
     });
   }
-  /**
-   * Splits the input text into chunks of approximately equal sizes, ensuring that words are not broken in the middle.
-   * @param {string} text - The input text to be divided into chunks.
-   * @param {number} partSize - The desired size of each chunk (in number of characters).
-   * @returns {string[]} An array containing the divided chunks of text.
-   */
+  /* Breaks up the input text into chunks of size `partSize` and returns an array of these chunks.
+   * If the size of the input text is not divisible by the `partSize`, the last chunk will contain the remaining characters.
+   * If the chunk split occurs in the middle of a character that acts as a fragment separator, the chunk will be adjusted to end at the next occurrence of a whitespace character.
+   * @param text The input text to be chunked.
+   * @param partSize The desired size of each chunk.
+   * @returns An array of strings representing the chunks of the input text.
+   * */
   breakTextIntoChunks(text: string, partSize: number): string[] {
     const chunks: string[] = [];
     let startIndex = 0;
